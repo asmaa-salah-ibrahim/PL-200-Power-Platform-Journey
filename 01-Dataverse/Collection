@@ -1,0 +1,102 @@
+# Collections
+
+## What is a Collection?
+
+A Collection is an in-memory local copy (snapshot) of data.
+
+It is stored inside the application's memory and allows me to work with data without sending requests to the data source every time.
+
+Collections exist only while the application is running.
+
+---
+
+## Important Notes
+
+A Collection is temporary.
+
+This means:
+
+- Updates in Dataverse are NOT automatically reflected inside the Collection.
+- Updates inside the Collection are NOT automatically written back to Dataverse.
+
+The Collection simply represents the data at the moment it was loaded.
+
+---
+
+## Collection is NOT a Database
+
+A Collection should never replace Dataverse.
+
+It is only used to improve the application's performance in specific scenarios.
+
+---
+
+## When should I use Collections?
+
+I usually use Collections when:
+
+- The data size is small.
+- I need the data only during the current session.
+- I want to support offline scenarios.
+- I want to reduce repeated requests to Dataverse.
+- I need temporary calculations before saving data.
+
+---
+
+## When should I NOT use Collections?
+
+I should avoid Collections when:
+
+- The data is very large.
+- I always need the latest version from Dataverse.
+- Multiple users continuously update the same data.
+
+In these cases, using Dataverse directly with Filter(), Search(), and Sort() is usually a better approach.
+
+---
+
+## Delegation
+
+When working directly with Dataverse, I should prefer delegated functions.
+
+Delegation means Dataverse performs filtering and querying on the server, and only the filtered result is returned to the application.
+
+This improves performance when working with large datasets.
+
+---
+
+## Collect()
+
+Adds new records to a Collection.
+
+```powerfx
+Collect(MyCollection, Devices)
+```
+
+---
+
+## ClearCollect()
+
+First clears the Collection, then loads new data.
+
+Internally it behaves like:
+
+```powerfx
+Clear(MyCollection);
+Collect(MyCollection, Devices);
+```
+
+---
+
+## Where should I load Collections?
+
+### OnStart
+
+Use when the data is needed globally across the application.
+
+### OnVisible
+
+Use when the data belongs to a specific screen and should always be refreshed when the user enters that screen.
+
+---
+
