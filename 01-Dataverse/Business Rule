@@ -1,0 +1,165 @@
+# Business Rules
+
+## What are Business Rules?
+
+Business Rules are **no-code business logic** provided by Microsoft Dataverse.
+
+They allow us to implement simple validation, conditions, and UI behavior without writing C# code.
+
+Business Rules are created using **drag-and-drop** conditions and actions.
+
+Examples include:
+
+- Make a field Required.
+- Hide or Show a field.
+- Lock or Unlock a field.
+- Set a default value.
+- Display an error message.
+
+---
+
+## Why do we use Business Rules?
+
+Business Rules help implement **simple business requirements** without creating Plugins.
+
+Instead of writing code for every validation, we can configure the required logic directly inside Dataverse.
+
+They reduce development time and make simple business logic easier to maintain.
+
+---
+
+## Business Rule Scope
+
+When creating a Business Rule, we must choose its Scope.
+
+### 1. Form
+
+The Business Rule runs only on the selected Model-driven App form.
+
+It only affects that specific form.
+
+---
+
+### 2. All Forms
+
+The Business Rule runs on every Model-driven App form that belongs to the same table.
+
+It does **not** apply to Canvas Apps.
+
+---
+
+### 3. Entity
+
+The Business Rule is attached to the Dataverse table itself.
+
+It is enforced by Dataverse instead of only affecting the UI.
+
+This makes it available across supported Dataverse operations instead of a single Model-driven form.
+
+---
+
+## Business Rules vs Plugins
+
+Although Entity Scope is more powerful than Form Scope, **Business Rules cannot replace Plugins.**
+
+Business Rules are limited to simple validation and built-in actions.
+
+Plugins are custom C# code that can implement complex business logic.
+
+### Business Rule
+
+- No-code.
+- Drag-and-drop configuration.
+- Simple validation.
+- Limited built-in actions.
+- Cannot call external APIs.
+- Easy to configure and maintain.
+
+### Plugin
+
+- Written using C#.
+- Runs inside the Dataverse Event Execution Pipeline.
+- Supports complex business logic.
+- Can call external APIs.
+- Can communicate with external systems.
+- Provides server-side validation.
+
+---
+
+## Why Plugins are More Powerful
+
+Plugins execute inside the Dataverse Event Execution Pipeline.
+
+Every request passes through the pipeline before or after the database operation depending on the registered stage.
+
+Because of this, Plugins can validate requests regardless of where they come from, including:
+
+- Model-driven Apps
+- Canvas Apps
+- Power Automate
+- SDK
+- External integrations
+- APIs
+
+This makes Plugins much harder to bypass than UI-based validation.
+
+---
+
+## Business Rules Limitations
+
+Business Rules are designed for simple scenarios.
+
+They cannot:
+
+- Call external APIs.
+- Execute complex algorithms.
+- Communicate with external systems.
+- Replace server-side custom business logic.
+
+When business logic becomes complex, Plugins should be used instead.
+
+---
+
+## When should I use Business Rules?
+
+Use Business Rules when:
+
+- The validation is simple.
+- The requirement can be implemented using built-in actions.
+- No custom code is required.
+- The goal is improving user experience.
+
+Examples:
+
+- Make Email required.
+- Hide Salary field.
+- Lock a field after approval.
+- Display validation messages.
+
+---
+
+## When should I use Plugins?
+
+Use Plugins when:
+
+- Complex validation is required.
+- Business logic cannot be implemented using Business Rules.
+- Integration with external systems is needed.
+- External APIs must be called.
+- The validation must execute regardless of where the request originates.
+
+---
+
+## Interview Notes
+
+Business Rules are intended for **simple configuration-based validation**.
+
+Plugins are intended for **complex server-side business logic**.
+
+Business Rules improve productivity.
+
+Plugins provide flexibility and complete control over the Dataverse execution pipeline.
+
+Business Rules do **not** replace Plugins.
+
+Plugins should be chosen whenever the business requirement exceeds the capabilities of Business Rules.
