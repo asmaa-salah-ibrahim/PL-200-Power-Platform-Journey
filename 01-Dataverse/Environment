@@ -1,1 +1,42 @@
 
+# Environment
+
+## Definition
+
+An **Environment** is an isolated workspace in Microsoft Power Platform that contains all the resources required to build business applications.
+
+Each environment can contain:
+
+- Dataverse
+- Canvas Apps
+- Model-driven Apps
+- Power Automate Flows
+- Business Process Flows
+- Connections
+- Security Configuration
+
+## Why do we need Environments?
+
+The main purpose of environments is to isolate resources and separate different stages of the application lifecycle.
+
+Common examples include:
+
+- Development
+- Testing
+- Production
+
+This separation prevents developers from directly modifying production applications.
+
+## Resource Sharing
+
+Applications within the same environment can share the same Dataverse and resources, provided users have the appropriate security permissions.
+
+Applications in different environments are isolated. Communication between them can be achieved using integration technologies such as APIs, Connectors, HTTP requests, or Power Automate.
+
+## Key Points
+
+- Environment is an isolated workspace.
+- It contains all Power Platform resources.
+- Resources inside the same environment can work together.
+- Different environments are isolated by design.
+- Environments help organize Development, Testing, and Production workloads.
