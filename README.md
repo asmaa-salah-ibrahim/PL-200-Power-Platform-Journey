@@ -50,9 +50,7 @@ and real business scenarios.
 - Dataverse
 - Power Pages
 - Power Automate
-- Microsoft Entra ID
-- SharePoint
-- Power BI (coming soon)
+-Classic WorkFlow
 
 ---
 
