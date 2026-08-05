@@ -53,7 +53,3 @@ and real business scenarios.
 -Classic WorkFlow
 
 ---
-
-## Repository Status
-
-This repository is continuously updated as I complete new labs and build more projects.
